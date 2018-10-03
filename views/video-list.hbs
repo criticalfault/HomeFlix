@@ -1,0 +1,6 @@
+
+<ul class="videos_list">
+  {{#each list}}
+    <li><a href='/video-play/{{@index}}' data-path='{{this.path}}'>{{this.name}}</li>
+  {{/each}}
+</ul>
