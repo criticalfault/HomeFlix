@@ -7,6 +7,7 @@ const PATH = process.env.PATH_TO_VIDEOS;
 //Mongo would be ideal for storing information about videos!
 //const mongoose = require('mongoose');
 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Homeflix' });
@@ -16,13 +17,15 @@ router.get('/', function(req, res, next) {
 router.get('/video-list', function(req, res, next)
 {
 	let file_list = fs.readdirSync(PATH);
-	file_list.filter(video => fs.lstatSync(video).isFile());
-	let video_list = [];
 
-	for(var i=0; i < videos_list.length; i++)
+	file_list.filter(video => fs.lstatSync(PATH+"/"+video).isFile() && !fs.lstatSync(PATH+"/"+video).isDirectory());
+	
+	let videos_list = [];
+
+	for(var i=0; i < file_list.length; i++)
 	{
 		//Trying to decide how best to return an array with path, filename, etc. Object may be it!
-		video_list.push({path: file_list[i], name: file_list[i].split('/').pop() });
+		videos_list.push({path: file_list[i], name: file_list[i].split('/').pop() });
 	}
 
 
