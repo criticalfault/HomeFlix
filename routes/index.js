@@ -18,7 +18,7 @@ router.get('/video-list', function(req, res, next)
 {
 	let file_list = fs.readdirSync(PATH);
 
-	file_list.filter(video => fs.lstatSync(PATH+"/"+video).isFile() && !fs.lstatSync(PATH+"/"+video).isDirectory());
+	file_list = file_list.filter(video => fs.lstatSync(PATH+"/"+video).isFile() == true && fs.lstatSync(PATH+"/"+video).isDirectory() == false);
 	
 	let videos_list = [];
 
@@ -47,11 +47,26 @@ router.get('/serve-video/:id', function(req, res, next)
 
 
 	// This will need the logic 
-	//var path = PATH_TO_VIDEO_SELECTED;
+	let file_list = fs.readdirSync(PATH);
+
+	file_list = file_list.filter(video => fs.lstatSync(PATH+"/"+video).isFile() == true && fs.lstatSync(PATH+"/"+video).isDirectory() == false);
 	
+	let videos_list = [];
+
+	for(var i=0; i < file_list.length; i++)
+	{
+		//Trying to decide how best to return an array with path, filename, etc. Object may be it!
+		videos_list.push({path: file_list[i], name: file_list[i].split('/').pop() });
+	}
+
+
+
+	const path = PATH+"/"+videos_list[req.params.id].path;
+	console.log(videos_list);
+	console.log(path);
 	const stat = fs.statSync(path)
-	const fileSize = stat.size
-	const range = req.headers.range
+	const fileSize = stat.size;
+	const range = req.headers.range;
 	
 	if (range) 
 	{
