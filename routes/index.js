@@ -27,33 +27,33 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/config', function(req, res, next) {
-  res.render('config', { title: 'HomeFlix' });
+  res.render('config', { title: 'HomeFlix', header: 'fixHeader' });
 });
 
 router.get('/contact', function(req, res, next) {
-	res.render('contact', { title: 'HomeFlix' });
+	res.render('contact', { title: 'HomeFlix', header: 'fixHeader' });
   });
 
   router.post('/contact', function(req, res, next) {
 
 	//Handle all of the Post Requests for the config module here
 
-  res.render('contact', { title: 'HomeFlix' });
+  res.render('contact', { title: 'HomeFlix', header: 'fixHeader' });
 });
 
 router.post('/config', function(req, res, next) {
 
 	//Handle all of the Post Requests for the config module here
 
-  res.render('config', { title: 'HomeFlix' });
+  res.render('config', { title: 'HomeFlix', header: 'fixHeader' });
 });
 
 router.get('/video-list', function(req, res, next){
-	res.render('video-list', { title: "Master Video List", "list": videos_list });
+	res.render('video-list', { title: "Master Video List", "list": videos_list, header: 'fixHeader' });
 });
 
 router.get('/video-play/:id', function(req,res,next){
-	res.render('video-player', { title: 'HomeFlix', id: req.params.id });
+	res.render('video-player', { title: 'HomeFlix', id: req.params.id, header: 'fixHeader', background: 'solid' });
 });
 
 router.get('/serve-video/:id', function(req, res, next){

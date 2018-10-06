@@ -1,5 +1,6 @@
 body {
   font-family: "Lato", sans-serif;
+  position:relative;
 }
 
 #hero {
@@ -10,55 +11,57 @@ body {
   z-index:-1;
 }
 
-#logo {padding:30px 0;}
+#logo {padding:20px 0 !important;}
 
 #videoPlayer {width:100%;}
 
-nav {
-  background:rgba(240,240,240,0.7);
+#mainNav {
+  background:rgba(0,0,0,0.8);
   text-transform:uppercase;
   font-weight:bold;
   text-align:center;
   margin-top:220px; 
   box-shadow:0 0 10px 0 #000000;
+  color:#AAAAAA
 }
 
-nav > ul {
+#mainNav > ul {
   list-style-type:none;
   margin:0;
   padding:0;
 }
 
-nav > ul > li {
+#mainNav > ul > li {
   margin:0;
   padding:0;
   display:inline-block;
   padding:0;
 }
 
-nav > ul > li > a {
+#mainNav > ul > li > a {
   text-decoration:none;
   display:block;
   padding:10px 25px;
   border:1px solid transparent;
 }
 
- nav > ul > li > a:hover {
-   border:1px solid #000000;
+ #mainNav > ul > li > a:hover {
+   border:1px solid #AAAAAA;
    border-radius:3px;
  }
 
- nav > ul > li > img {
+ #mainNav > ul > li > img {
    width:200px;
    cursor:pointer;
   }
 
-  main {
+  #mainBody {
     max-width:1400px;
-    margin:45px auto 0 auto;
-    background:#EEEEEE;
+    margin: 73px auto 0 auto;
+    background:rgba(0, 0, 0, 0.7);
     padding:40px;
-    color:#333333;
+    color:#AAAAAA;
+    min-height:650px;
   }
 
  .ease {
@@ -91,15 +94,18 @@ nav > ul > li > a {
 
 .fixHeader {
   position:fixed;
-  top:0;
+  top:-220px;
   width:100%;
   margin:0;
-  background:#FFFFFF;
 }
 
-.fixHeader img {width:100px;}
+.fixHeader img {width:100px !important;}
+
+.fixBody {margin-top:242px !important;}
 
 .hide {display:none;}
+
+.solid {background:#000000 !important;}
 
 #backTop {
   position:fixed;
