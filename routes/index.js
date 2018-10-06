@@ -12,7 +12,7 @@ function findVideos(){
 	for(var i=0; i < file_list.length; i++)
 	{
 		//Trying to decide how best to return an array with path, filename, etc. Object may be it!
-		videos_list.push({path: file_list[i], name: file_list[i].split('/').pop().split('.').unshift(), mime:mime.lookup(PATH+"/"+file_list[i]) });
+		videos_list.push({path: file_list[i], name: file_list[i].split('/').pop().split('.').splice(0,1), mime:mime.lookup(PATH+"/"+file_list[i]) });
 	}
 }
 
@@ -53,7 +53,8 @@ router.get('/video-list', function(req, res, next){
 });
 
 router.get('/video-play/:id', function(req,res,next){
-	res.render('video-player', { title: 'HomeFlix', id: req.params.id, header: 'fixHeader', background: 'solid' });
+	let movie_name = videos_list[req.params.id].name;
+	res.render('video-player', { title: 'HomeFlix - '+ movie_name, movie_name: movie_name, id: req.params.id, header: 'fixHeader', background: 'solid' });
 });
 
 router.get('/serve-video/:id', function(req, res, next){
