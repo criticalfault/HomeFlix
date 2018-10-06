@@ -1,28 +1,35 @@
 
-	<table class="videos_list">
+	<table id="videos_list">
 		<thead>
-			<th>#</th>
 			<th>File Name</th>
 		</thead>
 		<tbody>
 			{{#each list}}
 	    		<tr>
-	    			<td>{{@index}}</td>
-	    			<td><a href='/video-play/{{@index}}' data-path='{{this.path}}'>{{this.name}}</a></td>
+	    			<td><a href='/video-play/{{@index}}' data-type='{{mime}}' data-path='{{this.path}}'>{{this.name}}</a></td>
 	    		</tr>
 	  		{{/each}}
 		</tbody>
 	</table>
-
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<style>
+		th { text-align: left }
+	</style>
+	<script 
+		src="https://code.jquery.com/jquery-3.3.1.min.js" 
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" 
+		crossorigin="anonymous"></script>
 	
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+	<script 
+		src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" 
+		integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" 
+		crossorigin="anonymous"></script>
 	
-	<script type="text/javascript" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script 
+		src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 	
-	<script type="text/javascript">
+	<script>
 		$(document).ready( function () 
 		{
-		    $('#videoTable').DataTable();
+		    $('#videos_list').DataTable();
 		});
 	</script>
