@@ -2,21 +2,32 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 const mime = require('mime-types')
+const path = require('path');
 const PATH = process.env.PATH_TO_VIDEOS;
-let file_list = fs.readdirSync(PATH);
+const walk = require('fs-walk');
+
+let file_list = [];
 let videos_list = [];
 
-function findVideos(){
-	//file_list = file_list.filter(video => fs.lstatSync(PATH+"/"+video).isFile() == true && fs.lstatSync(PATH+"/"+video).isDirectory() == false && (mime.lookup(PATH+"/"+video) == "video/mp4" || mime.lookup(PATH+"/"+video) == "video/x-matroska" || mime.lookup(PATH+"/"+video) == "video/x-msvideo") );
-	file_list = file_list.filter(video => fs.lstatSync(PATH+"/"+video).isFile() == true && fs.lstatSync(PATH+"/"+video).isDirectory() == false && mime.lookup(PATH+"/"+video) == "video/mp4");
+function findVideos()
+{
+	walk.walkSync(PATH, function(basedir, filename, stat) 
+	{
+	   	file_list.push(basedir+"/"+filename);
+	});
+
+	file_list = file_list.filter(video => fs.lstatSync(video).isFile() == true && mime.lookup(video) == "video/mp4" && fs.lstatSync(video).isDirectory() == false);
 	for(var i=0; i < file_list.length; i++)
 	{
-		//Trying to decide how best to return an array with path, filename, etc. Object may be it!
-		videos_list.push({path: file_list[i], name: file_list[i].split('/').pop().split('.').splice(0,1), mime:mime.lookup(PATH+"/"+file_list[i]) });
+		let list_name = file_list[i].replace(PATH,'');
+		list_name = list_name.replace("/"," > ");
+		videos_list.push({path: file_list[i], list_name: list_name, name: file_list[i].split('/').pop().split('.').splice(0,1), mime:mime.lookup(PATH+"/"+file_list[i]) });
 	}
 }
 
 findVideos();
+
+
 
 //Mongo would be ideal for storing information about videos!
 //const mongoose = require('mongoose');
@@ -32,9 +43,9 @@ router.get('/config', function(req, res, next) {
 
 router.get('/contact', function(req, res, next) {
 	res.render('contact', { title: 'HomeFlix', header: 'fixHeader' });
-  });
+});
 
-  router.post('/contact', function(req, res, next) {
+router.post('/contact', function(req, res, next) {
 
 	//Handle all of the Post Requests for the config module here
 
@@ -53,13 +64,19 @@ router.get('/video-list', function(req, res, next){
 });
 
 router.get('/video-play/:id', function(req,res,next){
+
+
+	//Per say, if we wanted multiple players for different kinds of videos, this could be pretty easy to do here.
+	//Just would need to case out the mime types against the players that will run it. Might be an idea!
+
+
 	let movie_name = videos_list[req.params.id].name;
 	res.render('video-player', { title: 'HomeFlix - '+ movie_name, movie_name: movie_name, id: req.params.id, header: 'fixHeader', background: 'solid' });
 });
 
 router.get('/serve-video/:id', function(req, res, next){
 
-	const path = PATH+"/"+videos_list[req.params.id].path;
+	const path = videos_list[req.params.id].path;
 	const stat = fs.statSync(path)
 	const fileSize = stat.size;
 	const range = req.headers.range;
