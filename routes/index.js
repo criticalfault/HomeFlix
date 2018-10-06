@@ -30,6 +30,17 @@ router.get('/config', function(req, res, next) {
   res.render('config', { title: 'HomeFlix' });
 });
 
+router.get('/contact', function(req, res, next) {
+	res.render('contact', { title: 'HomeFlix' });
+  });
+
+  router.post('/contact', function(req, res, next) {
+
+	//Handle all of the Post Requests for the config module here
+
+  res.render('contact', { title: 'HomeFlix' });
+});
+
 router.post('/config', function(req, res, next) {
 
 	//Handle all of the Post Requests for the config module here
