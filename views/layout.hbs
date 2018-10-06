@@ -1,11 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-	<head>
-		<title>{{title}}</title>
-		<link rel='stylesheet' href='/stylesheets/style.css' />
-		<link rel="stylesheet" href='https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css'>
-	</head>
-	<body>
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{{title}}</title>
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+  <link rel='stylesheet' href='/stylesheets/style.css'/>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+  <img id="hero" src="/images/hero2.jpg" />
+
+  <header>
+
+		<nav>
+			<ul>
+				<li><a href="/" class="ease">Home</a></li>
+				<li><a href='/video-list'>Videos</a></li>
+				<li><a href='/config'>Configure</a></li>
+				<li id="logo"><img src="/images/logo-homeflix.png" onclick="window.location.href='/'" class="ease2"/></li>
+				<li><a href="http://www.deanpetty/me" class="ease" target="_blank" rel="noopener">About</a></li>
+				<li><a href="https://github.com/criticalfault/HomeFlix" class="ease" target="_blank" rel="noopener">Contribute</a></li>
+				<li><a href="/contact" class="ease">Contact Us</a></li>
+			</ul>
+		</nav>
+
+  </header>
+
+  <main>
+
+    <section>
+
 		{{{body}}}
-	</body>
+
+      </section>
+
+  </main>
+
+  <div id="backTop" class="ease hide"><i class="fas fa-chevron-up"></i></div>
+
+  <script src="/javascripts/main.js"></script>
+
+</body>
+
 </html>
+
+
