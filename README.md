@@ -12,5 +12,5 @@ You will need npm and Node in order to get this project to run.
 2. cd Homeflix
 3. npm install
 4. Make sure you added the path to your videos in `config.json`
-4. node bin/www
+4. npm start
 5. open your web browser localhost:3000
