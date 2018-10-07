@@ -20,7 +20,7 @@ function findVideos()
 	for(var i=0; i < file_list.length; i++)
 	{
 		let list_name = file_list[i].replace(PATH,'');
-		list_name = list_name.replace("/"," > ");
+		list_name = list_name.replace(new RegExp('/', 'g')," > ");
 		videos_list.push({path: file_list[i], list_name: list_name, name: file_list[i].split('/').pop().split('.').splice(0,1), mime:mime.lookup(PATH+"/"+file_list[i]) });
 	}
 }
