@@ -1,6 +1,6 @@
 	<h1>Master File List</h1>
 	<hr>
-	<table id="videos_list">
+	<table id="videos_list" class="dataTable" border="1">
 		<thead>
 			<th>File Name</th>
 		</thead>
@@ -12,29 +12,28 @@
 	  		{{/each}}
 		</tbody>
 	</table>
-	
-	<style>
-		th { text-align: left }
-	</style>
-	
-	<script 
-		src="https://code.jquery.com/jquery-3.3.1.min.js" 
-		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" 
-		crossorigin="anonymous">
-	</script>
-	<!--
-	<script 
-	src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" 
-	integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" 
-	crossorigin="anonymous"></script>
-	
-	<script 
-	src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-	
-	 <script>
-		$(document).ready( function () 
-		{
-		    $('#videos_list').DataTable();
+
+	<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script src="/javascripts/highlight.js"></script>
+
+	<script>
+
+		$(document).ready( function () {
+			$('.dataTable').DataTable({
+				"pageLength": 25,
+				 "searchHighlight": true
+			});
+			
+			var table = $('.dataTable').DataTable();
+ 
+			table.on( 'draw', function () {
+				var body = $( table.table().body() );
+		
+				body.unhighlight();
+				body.highlight( table.search() );  
+
+			});
+
 		});
+
 	</script>
--->
