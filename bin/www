@@ -5,6 +5,7 @@
  */
 
 var app = require('../app');
+var videosPath = require('../modules/config/main').pathToVideos;
 var debug = require('debug')('homeflix:server');
 var http = require('http');
 
@@ -25,9 +26,15 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+if (videosPath) {
+  server.listen(port);
+  server.on('error', onError);
+  server.on('listening', onListening);
+} else {
+  console.error('** YOU MUST PROVIDE A PATH TO VIDEOS **');
+  process.exit(1);
+}
+
 
 /**
  * Normalize a port into a number, string, or false.

@@ -3,7 +3,7 @@ const router = express.Router();
 const fs = require('fs');
 const mime = require('mime-types')
 const path = require('path');
-const PATH = process.env.PATH_TO_VIDEOS;
+const PATH = require('../modules/config/main').pathToVideos;
 const walk = require('fs-walk');
 
 let file_list = [];
@@ -24,9 +24,6 @@ function findVideos()
 		videos_list.push({path: file_list[i], list_name: list_name, name: file_list[i].split('/').pop().split('.').splice(0,1), mime:mime.lookup(PATH+"/"+file_list[i]) });
 	}
 }
-
-findVideos();
-
 
 
 //Mongo would be ideal for storing information about videos!
@@ -60,6 +57,7 @@ router.post('/config', function(req, res, next) {
 });
 
 router.get('/video-list', function(req, res, next){
+	findVideos();
 	res.render('video-list', { title: "Master Video List", "list": videos_list, header: 'fixHeader' });
 });
 
