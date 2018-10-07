@@ -21,8 +21,8 @@ body {
   font-weight:bold;
   text-align:center;
   margin-top:220px; 
-  box-shadow:0 0 10px 0 #000000;
-  color:#AAAAAA
+  color:#BBB;
+  box-shadow:0 0 5px 0 #4aa3d6;
 }
 
 #mainNav > ul {
@@ -46,7 +46,7 @@ body {
 }
 
  #mainNav > ul > li > a:hover {
-   border:1px solid #AAAAAA;
+   border:1px solid #BBB;
    border-radius:3px;
  }
 
@@ -60,8 +60,9 @@ body {
     margin: 73px auto 0 auto;
     background:rgba(0, 0, 0, 0.7);
     padding:40px;
-    color:#AAAAAA;
+    color:#BBB;
     min-height:650px;
+    box-shadow:0 0 5px 0 #4aa3d6;
   }
 
  .ease {
@@ -106,6 +107,21 @@ body {
 .hide {display:none;}
 
 .solid {background:#000000 !important;}
+
+.highlight {
+  background:#4aa3d6;
+  color:#000000;
+}
+
+.dataTable,
+table.dataTable tbody tr {
+  background:rgba(0,0,0,.7) !important;
+  color:#BBB;
+}
+
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {color:#BBB !important;}
+
+#videos_list_filter {margin-bottom:5px;}
 
 #backTop {
   position:fixed;
