@@ -7,7 +7,6 @@ const PATH = require('../modules/config/main').pathToVideos;
 const walk = require('fs-walk');
 const ExifTool = require('exiftool-kit')
 const exiftool = new ExifTool()
-//var chromecasts = require('chromecasts')()
 var file_list = [];
 var videos_list = [];
 
@@ -93,26 +92,6 @@ router.get('/video-play/:id', function(req,res,next){
 	let movie_name = videos_list[req.params.id].name;
 	//Per say, if we wanted multiple players for different kinds of videos, this could be pretty easy to do here.
 	//Just would need to case out the mime types against the players that will run it. Might be an idea!
-	
-	
-
-
-	
-	// var list = [];
-	// for(var i=0; i < chromecasts.players.length;i++)
-	// {
-	// 	console.log(chromecasts.players[i].name);
-	// 	list[chromecasts.players[i].name] = i;
-	// }
-
-	// var options = 
-	// 	{
- // 	 		title: movie_name,
- //  			type: 'video/mp4'
-	// 	};
-	// 	//http://localhost:3000/video-play/0   http://localhost:3000/download-video/
-	// chromecasts.players[list['The Highway TV']].play("http://localhost:3000/video-play/"+req.params.id, options);
-	
 	
 	res.render('video-player', { title: 'HomeFlix - '+ movie_name, movie_name: movie_name, id: req.params.id, header: 'fixHeader', background: 'solid' });
 });
