@@ -96,13 +96,6 @@ router.get('/video-play/:id', function(req,res,next){
 	res.render('video-player', { title: 'HomeFlix - '+ movie_name, movie_name: movie_name, id: req.params.id, header: 'fixHeader', background: 'solid' });
 });
 
-router.get('/download-video/:id', function(req, res, next){
-
-	var file = '/Users/deanpetty/Desktop/HomeFlix/public/videos/test.mp4';
-	console.log(file);
-  	res.sendFile(file); // Set disposition and send it.res.download()
-});
-
 router.get('/serve-video/:id', function(req, res, next){
 
 	const path = videos_list[req.params.id].path;
