@@ -3,11 +3,15 @@
 	<table id="videos_list" class="dataTable" border="1">
 		<thead>
 			<th>File Name</th>
+			<th>Genre</th>
+			<th>Duration</th>
 		</thead>
 		<tbody>
 			{{#each list}}
 	    		<tr>
 	    			<td><a href='/video-play/{{@index}}'>{{this.list_name}}</a></td>
+	    			<td>{{#if this.genre}} {{this.genre}} {{/if}}</td>
+	    			<td>{{this.duration}}</td>
 	    		</tr>
 	  		{{/each}}
 		</tbody>

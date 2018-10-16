@@ -5,9 +5,10 @@ const mime = require('mime-types')
 const path = require('path');
 const PATH = require('../modules/config/main').pathToVideos;
 const walk = require('fs-walk');
-
-let file_list = [];
-let videos_list = [];
+const ExifTool = require('exiftool-kit')
+const exiftool = new ExifTool()
+var file_list = [];
+var videos_list = [];
 
 function findVideos()
 {
@@ -21,10 +22,35 @@ function findVideos()
 	{
 		let list_name = file_list[i].replace(PATH,'');
 		list_name = list_name.replace(new RegExp('/', 'g')," > ");
-		videos_list.push({path: file_list[i], list_name: list_name, name: file_list[i].split('/').pop().split('.').splice(0,1), mime:mime.lookup(PATH+"/"+file_list[i]) });
+		(() => {
+			return Promise.all([ 
+				exiftool.getTags(
+				{
+			    	source: file_list[i]
+			   	 
+			    })
+			    ]).then( function(value) 
+			    {
+			    	//console.log(value[0]);
+
+			    	var video = {	"path": value[0].SourceFile,
+		    						"duration": value[0].Duration, 
+		    						"list_name": list_name, 
+		    						"name": value[0].FileName, 
+		    						"mime":value[0].MIMEType }
+
+		    		if(value[0].Genre)		{ video.genre = value[0].Genre; 		}
+		    		if(value[0].Title)		{ video.name = value[0].Title; 			}
+		    		if(value[0].Langauge)	{ video.langauge = value[0].Langauge; 	}
+
+			    	videos_list.push(video);
+			    })
+	  			.catch(console.error)
+			    
+		})()
 	}
 }
-
+findVideos()
 
 //Mongo would be ideal for storing information about videos!
 //const mongoose = require('mongoose');
@@ -57,18 +83,16 @@ router.post('/config', function(req, res, next) {
 });
 
 router.get('/video-list', function(req, res, next){
-	findVideos();
+	console.log(videos_list);
 	res.render('video-list', { title: "Master Video List", "list": videos_list, header: 'fixHeader' });
 });
 
 router.get('/video-play/:id', function(req,res,next){
 
-
+	let movie_name = videos_list[req.params.id].name;
 	//Per say, if we wanted multiple players for different kinds of videos, this could be pretty easy to do here.
 	//Just would need to case out the mime types against the players that will run it. Might be an idea!
-
-
-	let movie_name = videos_list[req.params.id].name;
+	
 	res.render('video-player', { title: 'HomeFlix - '+ movie_name, movie_name: movie_name, id: req.params.id, header: 'fixHeader', background: 'solid' });
 });
 
