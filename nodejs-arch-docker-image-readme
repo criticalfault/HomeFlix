@@ -1,0 +1,6 @@
+create docker hub account
+#: docker login
+#: docker pull tymkillerapps/nodejs-arch:nodejs-arch-v1
+#: docker run -i -t tymkillerapps/nodejs-arch:nodejs-arch-v1 /bin/bash
+
+have fun
