@@ -1,14 +1,10 @@
 body {
   font-family: "Lato", sans-serif;
   position:relative;
-}
-
-#hero {
-  width:100%;
-  height:auto;
-  position:fixed;
-  top:0;
-  z-index:-1;
+  background-image:url('/images/hero2.jpg');
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:center;
 }
 
 #logo {padding:20px 0 !important;}
