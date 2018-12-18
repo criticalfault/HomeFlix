@@ -6,11 +6,11 @@ const path = require('path');
 const PATH = require('../modules/config/main').pathToVideos;
 const walk = require('fs-walk');
 
-let file_list = [];
-let videos_list = [];
 
 function findVideos()
 {
+	let file_list = [];
+	
 	walk.walkSync(PATH, function(basedir, filename, stat) 
 	{
 	   	file_list.push(basedir+"/"+filename);
@@ -57,6 +57,7 @@ router.post('/config', function(req, res, next) {
 });
 
 router.get('/video-list', function(req, res, next){
+	videos_list = [];
 	findVideos();
 	res.render('video-list', { title: "Master Video List", "list": videos_list, header: 'fixHeader' });
 });
