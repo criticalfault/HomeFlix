@@ -8,3 +8,8 @@ patch:
         patched: '2019-08-27T16:28:51.171Z'
     - hbs > handlebars > async > lodash:
         patched: '2019-08-27T16:28:51.171Z'
+  SNYK-JS-HTTPSPROXYAGENT-469131:
+    - snyk > proxy-agent > https-proxy-agent:
+        patched: '2019-10-05T02:08:18.414Z'
+    - snyk > proxy-agent > pac-proxy-agent > https-proxy-agent:
+        patched: '2019-10-05T02:08:18.414Z'

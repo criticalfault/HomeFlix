@@ -13,11 +13,11 @@
     "debug": "~2.6.3",
     "express": "~4.16.0",
     "fs-walk": "0.0.2",
-    "hbs": "~4.0.4",
+    "hbs": "~4.0.5",
     "mime-types": "^2.1.20",
     "morgan": "~1.9.0",
     "serve-favicon": "~2.4.2",
-    "snyk": "^1.221.0"
+    "snyk": "^1.231.0"
   },
   "snyk": true
 }
