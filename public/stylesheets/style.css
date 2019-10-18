@@ -5,6 +5,7 @@ body {
   background-repeat:no-repeat;
   background-size:cover;
   background-position:center;
+  cursor:url('/images/eyeball.png'), auto;
 }
 
 #logo {padding:20px 0 !important;}
