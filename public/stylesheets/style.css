@@ -6,11 +6,26 @@ body {
   background-image:url('/images/hero4.jpg');
   background-repeat:no-repeat;
   background-size:cover;
-  background-position:center;q27il/\8
-  min-height:950px;
+  background-position:center;
+  min-height:1025px;
 }
 
 #videoPlayer {width:100%;}
+
+#videos_list a{
+  display:block;
+  text-decoration:none;
+  font-weight:bold;
+  font-size:20px;
+  padding:12px;
+}
+
+#videos_list a:hover {
+  background:#4aa3d6;
+  color:#000000;
+}
+
+#videos_list td {padding:0;}
 
 #mainNav {
   background:#000;
@@ -24,7 +39,7 @@ body {
   #mainBody {
     max-width:1400px;
     margin: 73px auto 0 auto;
-    background:rgba(0, 0, 0, 0.85);
+    background:rgba(8, 5, 10, 0.85);
     padding:20px 40px;
     color:#BBB;
     min-height:650px;
@@ -72,7 +87,14 @@ body {
   position:absolute;
   top:50%;
   transform:translateY(-50%);
+  font-size:22px;
+  color:#FFFFFF;
+  cursor:pointer;
 }
+
+.setting:hover {color:#4aa3d6;}
+
+.setting2 {left:40px;}
 
 .highlight {
   background:#4aa3d6;

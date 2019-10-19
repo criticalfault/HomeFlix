@@ -1,40 +1,50 @@
 	<h1>Movie Shows</h1>
 	<hr>
-	<table id="videos_list" class="dataTable" border="1">
+	<table id="videos_list" class="dataTable" border="1" style="z-index:99;">
 		<thead>
 			<th>Sort by Name</th>
 		</thead>
 		<tbody>
 			{{#each list}}
 	    		<tr>
-	    			<td><a href='/video-play/{{@index}}'><i class="fas fa-video"></i> {{this.list_name}}</a></td>
+	    			<td><a href='/video-play/{{@index}}' class='ease'><i class="fas fa-video"></i>&nbsp;&nbsp;{{this.list_name}}</a></td>
 	    		</tr>
 	  		{{/each}}
 		</tbody>
 	</table>
 
 	<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script src="/javascripts/snowfall.min.js"></script>
 	<script src="/javascripts/highlight.js"></script>
     <script src="/javascripts/index.js"></script>
 
-	<script>
+	<script>    
+	$(document).ready( function () {
 
-		$(document).ready( function () {
-			$('.dataTable').DataTable({
-				"pageLength": 25,
-				 "searchHighlight": true
-			});
-			
-			var table = $('.dataTable').DataTable();
- 
-			table.on( 'draw', function () {
-				var body = $( table.table().body() );
+		$('.dataTable').DataTable({
+			"pageLength": 25,
+				"searchHighlight": true
+		});
 		
-				body.unhighlight();
-				body.highlight( table.search() );  
+		var table = $('.dataTable').DataTable();
 
-			});
+		table.on( 'draw', function () {
+			var body = $( table.table().body() );
+	
+			body.unhighlight();
+			body.highlight( table.search() );  
 
 		});
 
+		$(".fa-spider").click(function(){
+			$(document).snowfall({
+				image :"/images/spider.png", 
+				minSize: 10, 
+				maxSize:30,
+				flakeCount:50,
+				flakeIndex:1
+			});
+		});
+
+	});
 	</script>

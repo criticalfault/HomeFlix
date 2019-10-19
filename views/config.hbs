@@ -1,18 +1,25 @@
 <style type="text/css">
 
 	fieldset {
-		border: solid 1px black;
+		border: solid 1px #FFFFFF;
+		background:#000;
 	}
 
+	label,button {cursor:pointer;}
+	
 </style>
 
 <fieldset>
-	<legend>Admin Actions</legend>
+	<legend><h3>Admin Actions</h3></legend>
 	<form method="POST" action="/config">
 		<br>
-		<input type="radio" name="config_options" value="video_list_rebuild">Rebuild Video List?<br>
-		<input type="radio" name="config_options" value="video_list_empty">Empty Video List?<br>
-		<br>
+		<label for="config_options">
+			<input type="radio" name="config_options" id="config_options" value="video_list_rebuild"> Rebuild Video List?
+		</label><br>
+		<label for="config_options2">
+			<input type="radio" name="config_options" id="config_options2" value="video_list_empty"> Empty Video List?
+		</label>
+		<br><br>
 		<button>Take Action</button>
 	</form>
 </fieldset>
