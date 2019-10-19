@@ -14,7 +14,6 @@
 	</table>
 
 	<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-	<script src="/javascripts/snowfall.min.js"></script>
 	<script src="/javascripts/highlight.js"></script>
     <script src="/javascripts/index.js"></script>
 
@@ -34,16 +33,6 @@
 			body.unhighlight();
 			body.highlight( table.search() );  
 
-		});
-
-		$(".fa-spider").click(function(){
-			$(document).snowfall({
-				image :"/images/spider.png", 
-				minSize: 10, 
-				maxSize:30,
-				flakeCount:50,
-				flakeIndex:1
-			});
 		});
 
 	});

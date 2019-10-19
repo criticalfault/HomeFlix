@@ -28,7 +28,7 @@
 				<a href='/config' class="setting left ease"><i class="fas fa-cog"></i></a>
         <a href="https://github.com/criticalfault/HomeFlix" class="setting left setting2 ease" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
 				<a href="/"><img src="/images/logo-homeflix.png" width="150"/></a>
-				<span class="right setting ease"><i class="fas fa-spider"></i></span>
+				<span class="right setting ease"><i class="fas fa-spider on"></i></span>
 		</nav>
 
   </header>
@@ -46,6 +46,27 @@
   <div id="backTop" class="ease hide"><i class="fas fa-chevron-up"></i></div>
 
   <script src="https://kit.fontawesome.com/955217f2ce.js" crossorigin="anonymous"></script>
+  	<script src="/javascripts/snowfall.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      $(".fa-spider").click(function(){
+        $(this).toggleClass('on');
+        if($(this).hasClass('on')) {
+          $(document).snowfall('clear');
+        } else {
+          $(document).snowfall('clear');
+          $(document).snowfall({
+            image :"/images/spider.png", 
+            minSize: 10, 
+            maxSize:30,
+            flakeCount:50,
+            flakeIndex:1
+          });
+        } 
+      });
+    });
+  </script>
 
 </body>
 

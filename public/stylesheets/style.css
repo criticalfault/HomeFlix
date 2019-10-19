@@ -1,5 +1,3 @@
-/* html,body {cursor:url('/images/eyeball.png'), auto;} */
-
 body {
   font-family: "Lato", sans-serif;
   position:relative;
@@ -7,6 +5,7 @@ body {
   background-repeat:no-repeat;
   background-size:cover;
   background-position:center;
+  cursor:url('/images/eyeball.png'), auto;
   min-height:1025px;
 }
 
