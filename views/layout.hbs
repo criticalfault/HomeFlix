@@ -25,16 +25,10 @@
 
   <header>
 
-		<nav id="mainNav" class="{{header}}">
-			<ul>
-				<li><a href="/" class="ease">Home</a></li>
-				<li><a href='/video-list'>Videos</a></li>
-				<li><a href='/config'>Configure</a></li>
-				<li id="logo"><img src="/images/logo-homeflix.png" onclick="window.location.href='/'" class="ease2"/></li>
-				<li><a href="http://www.deanpetty.me" class="ease" target="_blank" rel="noopener">About</a></li>
-				<li><a href="https://github.com/criticalfault/HomeFlix" class="ease" target="_blank" rel="noopener">Contribute</a></li>
-				<li><a href="/contact" class="ease">Contact Us</a></li>
-			</ul>
+		<nav id="mainNav" class="relative">
+				<a href='/config' class="setting left"><i class="fas fa-cog"></i></a>
+				<a href="/"><img src="/images/logo-homeflix.png" width="150"/></a>
+				<a href="https://github.com/criticalfault/HomeFlix" class="setting right" target="_blank" rel="noopener"><i class="fas fa-info-circle"></i></a>
 		</nav>
 
   </header>
@@ -50,8 +44,6 @@
   </main>
 
   <div id="backTop" class="ease hide"><i class="fas fa-chevron-up"></i></div>
-
-  <script src="/javascripts/main.js"></script>
 
 </body>
 
