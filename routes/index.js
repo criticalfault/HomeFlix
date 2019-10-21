@@ -20,7 +20,7 @@ function findVideos()
 	for(var i=0; i < file_list.length; i++)
 	{
 		let list_name = file_list[i].replace(PATH,'');
-		list_name = list_name.replace(new RegExp('/', 'g')," > ");
+		list_name = list_name.replace(new RegExp('/', 'g'),"");
 		videos_list.push({path: file_list[i], list_name: list_name, name: file_list[i].split('/').pop().split('.').splice(0,1), mime:mime.lookup(PATH+"/"+file_list[i]) });
 	}
 }
@@ -31,22 +31,13 @@ function findVideos()
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'HomeFlix' });
+	videos_list = [];
+	findVideos();
+	res.render('index', { title: "HomeFlix", "list": videos_list});
 });
 
 router.get('/config', function(req, res, next) {
   res.render('config', { title: 'HomeFlix', header: 'fixHeader' });
-});
-
-router.get('/contact', function(req, res, next) {
-	res.render('contact', { title: 'HomeFlix', header: 'fixHeader' });
-});
-
-router.post('/contact', function(req, res, next) {
-
-	//Handle all of the Post Requests for the config module here
-
-  res.render('contact', { title: 'HomeFlix', header: 'fixHeader' });
 });
 
 router.post('/config', function(req, res, next) {
@@ -54,12 +45,6 @@ router.post('/config', function(req, res, next) {
 	//Handle all of the Post Requests for the config module here
 
   res.render('config', { title: 'HomeFlix', header: 'fixHeader' });
-});
-
-router.get('/video-list', function(req, res, next){
-	videos_list = [];
-	findVideos();
-	res.render('video-list', { title: "Master Video List", "list": videos_list, header: 'fixHeader' });
 });
 
 router.get('/video-play/:id', function(req,res,next){

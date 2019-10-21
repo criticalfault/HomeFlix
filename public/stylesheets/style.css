@@ -1,61 +1,45 @@
 body {
   font-family: "Lato", sans-serif;
   position:relative;
-  background-image:url('/images/hero3.jpg');
+  background-image:url('/images/hero4.jpg');
   background-repeat:no-repeat;
   background-size:cover;
   background-position:center;
+  cursor:url('/images/eyeball.png'), auto;
+  min-height:1025px;
 }
-
-#logo {padding:20px 0 !important;}
 
 #videoPlayer {width:100%;}
 
-#mainNav {
-  background:rgba(0,0,0,0.8);
-  text-transform:uppercase;
+#videos_list a{
+  display:block;
+  text-decoration:none;
   font-weight:bold;
+  font-size:20px;
+  padding:12px;
+}
+
+#videos_list a:hover {
+  background:#4aa3d6;
+  color:#000000;
+}
+
+#videos_list td {padding:0;}
+
+#mainNav {
+  background:#000;
+  text-transform:uppercase;
   text-align:center;
-  margin-top:220px; 
   color:#BBB;
   box-shadow:0 0 5px 0 #4aa3d6;
+  padding:5px 10px;
 }
-
-#mainNav > ul {
-  list-style-type:none;
-  margin:0;
-  padding:0;
-}
-
-#mainNav > ul > li {
-  margin:0;
-  padding:0;
-  display:inline-block;
-  padding:0;
-}
-
-#mainNav > ul > li > a {
-  text-decoration:none;
-  display:block;
-  padding:10px 25px;
-  border:1px solid transparent;
-}
-
- #mainNav > ul > li > a:hover {
-   border:1px solid #BBB;
-   border-radius:3px;
- }
-
- #mainNav > ul > li > img {
-   width:200px;
-   cursor:pointer;
-  }
 
   #mainBody {
     max-width:1400px;
     margin: 73px auto 0 auto;
-    background:rgba(0, 0, 0, 0.7);
-    padding:40px;
+    background:rgba(8, 5, 10, 0.85);
+    padding:20px 40px;
     color:#BBB;
     min-height:650px;
     box-shadow:0 0 5px 0 #4aa3d6;
@@ -89,20 +73,27 @@ body {
 
 .padImage {padding:0 10px 10px 0;}
 
-.fixHeader {
-  position:fixed;
-  top:-220px;
-  width:100%;
-  margin:0;
-}
-
-.fixHeader img {width:100px !important;}
-
-.fixBody {margin-top:242px !important;}
-
 .hide {display:none;}
 
+.relative {position:relative;}
+
+.left{left:10px;}
+.right{right:10px;}
+
 .solid {background:#000000 !important;}
+
+.setting {
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:22px;
+  color:#FFFFFF;
+  cursor:pointer;
+}
+
+.setting:hover {color:#4aa3d6;}
+
+.setting2 {left:40px;}
 
 .highlight {
   background:#4aa3d6;
