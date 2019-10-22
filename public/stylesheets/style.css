@@ -9,6 +9,14 @@ body {
   min-height:1025px;
 }
 
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
 #videoPlayer {width:100%;}
 
 #videos_list a{
@@ -26,6 +34,8 @@ body {
 
 #videos_list td {padding:0;}
 
+#videos_list i {color:#990000;}
+
 #mainNav {
   background:#000;
   text-transform:uppercase;
@@ -33,6 +43,8 @@ body {
   color:#BBB;
   box-shadow:0 0 5px 0 #4aa3d6;
   padding:5px 10px;
+  position:relative;
+  z-index:10;
 }
 
   #mainBody {
@@ -96,7 +108,7 @@ body {
 .setting2 {left:40px;}
 
 .highlight {
-  background:#4aa3d6;
+  background:yellow;
   color:#000000;
 }
 
