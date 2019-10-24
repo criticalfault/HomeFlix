@@ -6,6 +6,7 @@ const path = require('path');
 const PATH = require('../modules/config/main').pathToVideos;
 const walk = require('fs-walk');
 const VideosFilesPath = __dirname+"/../modules/config/videos.json";
+var videos_list = [];
 
 function is_file(path) {
     try {
@@ -75,7 +76,7 @@ router.post('/config', function(req, res, next)
 		fs.appendFile(VideosFilesPath, data, 'utf-8');
 		msg = "Videos Rebuilt";
 	}
-	elseif(req.body.config_options == "video_list_empty")
+	else if(req.body.config_options == "video_list_empty")
 	{
 		fs.unlinkSync(VideosFilesPath);
 		msg = "Videos Emptied. Will be rebuilt when you go back to the index.";
