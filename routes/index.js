@@ -82,7 +82,7 @@ router.post('/config', function(req, res, next)
 	}
 	//Handle all of the Post Requests for the config module here
 
-  res.render('config', { title: 'HomeFlix', header: 'fixHeader', msg: });
+  res.render('config', { title: 'HomeFlix', header: 'fixHeader', msg:msg });
 });
 
 router.get('/video-play/:id', function(req,res,next){
