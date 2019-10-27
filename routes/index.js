@@ -5,7 +5,18 @@ const mime = require('mime-types')
 const path = require('path');
 const PATH = require('../modules/config/main').pathToVideos;
 const walk = require('fs-walk');
+const VideosFilesPath = __dirname+"/../modules/config/videos.json";
+var videos_list = [];
 
+function is_file(path) {
+    try {
+        var stat = fs.lstatSync(path);
+        return stat.isFile();
+    } catch (e) {
+        // lstatSync throws an error if path doesn't exist
+        return false;
+    }
+}
 
 function findVideos()
 {
@@ -29,10 +40,23 @@ function findVideos()
 //Mongo would be ideal for storing information about videos!
 //const mongoose = require('mongoose');
 
+
+
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
+
 	videos_list = [];
-	findVideos();
+	if(is_file(VideosFilesPath))
+	{
+		let rawData = fs.readFileSync(VideosFilesPath)
+		var videos_list = JSON.parse(rawData);
+	}else{
+		findVideos();
+		let data = JSON.stringify(videos_list);
+		fs.appendFile(VideosFilesPath, data, 'utf-8');
+	}
+	
 	res.render('index', { title: "HomeFlix", "list": videos_list});
 });
 
@@ -40,11 +64,26 @@ router.get('/config', function(req, res, next) {
   res.render('config', { title: 'HomeFlix', header: 'fixHeader' });
 });
 
-router.post('/config', function(req, res, next) {
-
+router.post('/config', function(req, res, next) 
+{
+	videos_list = [];
+	var msg = ""
+	if(req.body.config_options == "video_list_rebuild")
+	{
+		fs.unlinkSync(VideosFilesPath);
+		findVideos();
+		let data = JSON.stringify(videos_list);
+		fs.appendFile(VideosFilesPath, data, 'utf-8');
+		msg = "Videos Rebuilt";
+	}
+	else if(req.body.config_options == "video_list_empty")
+	{
+		fs.unlinkSync(VideosFilesPath);
+		msg = "Videos Emptied. Will be rebuilt when you go back to the index.";
+	}
 	//Handle all of the Post Requests for the config module here
 
-  res.render('config', { title: 'HomeFlix', header: 'fixHeader' });
+  res.render('config', { title: 'HomeFlix', header: 'fixHeader', msg:msg });
 });
 
 router.get('/video-play/:id', function(req,res,next){
