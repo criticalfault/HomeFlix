@@ -1,6 +1,9 @@
 # HomeFlix
 An at home video streaming webserver built with Node.js and Express. Giving you full control of your media!
 
+## Requirements
+This currently only works under Node V8. We have tested v12.0, but there are some issues that will need to be resolved.
+
 ## Videos Path
 Located in `config.json` is a property called `pathToVideos`. This path is vital to the running of this application and it will not start until it is configured. To configure, simply place in the full path to the directory housing your video files and save it before running. 
 
